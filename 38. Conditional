@@ -1,0 +1,13 @@
+module top_module (
+    input [7:0] a, b, c, d,
+    output [7:0] min);//
+
+    
+    reg [7:0] con1, con2;
+    
+
+    assign con1 = (a>b)? b:a;
+    assign con2 = (c>d)? d:c;
+    assign min = (con2>con1)? con1:con2;
+
+endmodule

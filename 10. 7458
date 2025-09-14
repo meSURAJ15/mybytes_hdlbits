@@ -1,0 +1,16 @@
+module top_module ( 
+    input p1a, p1b, p1c, p1d, p1e, p1f,
+    output p1y,
+    input p2a, p2b, p2c, p2d,
+    output p2y );
+    wire con1,con2,con3,con4;
+    
+    assign con1 = p2a & p2b;
+    assign con2 = p2c & p2d;
+    assign con3 = p1a & p1b & p1c;
+    assign con4 = p1d & p1e & p1f;
+    assign p2y = con1|con2;
+    assign p1y = con3|con4;
+
+
+endmodule

@@ -1,0 +1,21 @@
+module top_module ( 
+    input clk, 
+    input [7:0] d, 
+    input [1:0] sel, 
+    output [7:0] q 
+);
+    reg [7:0] reg1 , reg2, reg3;
+    my_dff8 d1(clk,d ,reg1);
+    my_dff8 d2(clk,reg1 ,reg2);
+    my_dff8 d3(clk,reg2 ,reg3);
+    
+    always@(*) begin
+        case(sel)
+            2'b00: q <= d;
+            2'b01: q <= reg1;
+            2'b10: q <= reg2;
+            2'b11: q <= reg3;
+        endcase      
+    end
+
+endmodule

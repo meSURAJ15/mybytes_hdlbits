@@ -1,0 +1,6 @@
+module top_module( output one );
+
+    supply1 vdd;
+    assign one = vdd;
+
+endmodule

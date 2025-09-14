@@ -1,0 +1,15 @@
+module top_module(
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);
+    wire sel , wire1 , wire2;
+    reg [15:0] con1, con2;
+    
+    add16 a1 (a[15:0], b[15:0] , 1'b0 , sum [15:0] , sel);
+    add16 a2 (a[31:16], b[31:16] , 1'b0 , con1  , wire1);
+    add16 a3 (a[31:16], b[31:16] , 1'b1 , con2  , wire2);
+    
+    assign sum[31:16] = sel ? con2:con1;
+
+endmodule

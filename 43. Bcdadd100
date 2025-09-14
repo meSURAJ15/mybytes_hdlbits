@@ -1,0 +1,16 @@
+module top_module( 
+    input [399:0] a, b,
+    input cin,
+    output cout,
+    output [399:0] sum );
+    genvar i ;
+    reg [99:0] co;
+    generate 
+        bcd_fadd a1 (a[3:0] , b[3:0] , cin , co[0] , sum [3: 0]);
+        for (i = 4 ; i < 400 ; i = i + 4) begin: a2
+            bcd_fadd a2(a[i+3:i] , b[i+3:i] , co[i/4 - 1] , co[i/4 ] , sum [i+3:i]);
+        end
+    endgenerate
+    assign cout = co[99];
+
+endmodule

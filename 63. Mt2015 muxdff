@@ -1,0 +1,21 @@
+module top_module (
+	input clk,
+	input L,
+	input r_in,
+	input q_in,
+	output reg Q);
+    
+    wire q1, q2, q3;
+    ff f1 (.in0(r_in), .in1(q_in), .clk(clk) , .sel(L), .q(q1));
+    ff f2 (.in0(r_in), .in1(q1), .clk(clk) , .sel(L), .q(q2));
+    ff f3 (.in0(r_in), .in1(q2^q3), .clk(clk) , .sel(L), .q(q3));    
+
+    assign Q = {q3,q2,q1};
+
+endmodule
+
+module ff (input in0, input in1 , input clk , input sel, output q);
+    always@(posedge clk) begin
+        q  <= sel ?in0:in1;
+    end
+endmodule

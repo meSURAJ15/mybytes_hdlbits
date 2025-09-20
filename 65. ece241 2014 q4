@@ -1,0 +1,18 @@
+module top_module (
+    input clk,
+    input x,
+    output z
+); 
+    reg q1,q2,q3;
+    d_ff dff1(.clk(clk),.D(x^q1),.Q(q1));
+    d_ff dff2(.clk(clk),.D(x&~q2),.Q(q2));
+    d_ff dff3(.clk(clk),.D(x| ~q3),.Q(q3));
+        
+    assign z = ~(q1|q2|q3);   
+endmodule
+
+module d_ff(input clk,input D,output Q);
+    always @(posedge clk) begin
+        Q<= D;
+    end
+endmodule
